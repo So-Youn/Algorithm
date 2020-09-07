@@ -16,12 +16,18 @@ public class Sort02 {
 		for (int i=0; i<n;i++) {
 			int tmp = kb.nextInt();
 			//배열의 뒤에서부터 위치를 찾는다.(i개)
+			
 			int j = i-1;
 			while(data[j] > tmp) {
-				data[j+1] = data[j];
+				data[j+1] = data[j]; //한칸 뒤로 이동
 				j--;
 			}
+			//현재 j위치일 때 data[j]가 tmp보다 작을 때 tmp위치는 data[j+1]이 된다.
+			data[j+1] = tmp;
 			
+			for(int k=0; k<= i; k++)
+				System.out.print(data[k]+ " ");
+			System.out.println();
 		}
 		kb.close();
 	}
