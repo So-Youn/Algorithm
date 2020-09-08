@@ -2,6 +2,9 @@ package method.function;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /*
@@ -27,21 +30,31 @@ public class WordCount {
 				String fileName = sc.next();
 				makeIndex(fileName);
 			} else if (command.equals("find")) {
-
-			} else if (command.equals("saves")) {
+				String str = sc.next();
+				int index = findWord(str);
+				if(index > -1) {
+					System.out.println("The word "+ words[index]+" appears "+ count[index]+"times.");
+				} else
+					//word[-1] : indexOutOfBound 에러 발생
+					System.out.println("The word "+ str +" does not appear.");
+			} else if (command.equals("saves")) { //파일로 저장
+				String fileName = sc.next();
+				saveAs( fileName );
 
 			} else if (command.equals("exit"))
 				break;
 
 		}
 		sc.close();
+
 	}
 
 	static void makeIndex(String fileName) {
 		try {
 			Scanner inFile = new Scanner(new File(fileName));
 			while(inFile.hasNext()) {
-				
+				String str = inFile.next();
+				addWord(str);
 			}
 			inFile.close();
 		} catch (FileNotFoundException e) {
@@ -49,6 +62,38 @@ public class WordCount {
 			return;//아무일도 하지 않도록
 		}
 		
+		
+	}
+
+	static void addWord(String str) {
+		int index = findWord(str); //returns -1 if not found
+		if( index != -1) { //found
+			count[index]++;
+		} else { //not found
+			words[n] = str;
+			count[n] = 1;
+			n++; //단어 갯수 증가
+		}
+	}
+	static int findWord(String str) {
+		for ( int i =0; i<n; i++) 
+			if ( words[i].equalsIgnoreCase(str)) 
+				return i;
+		return -1;
+		
+	}
+	static void saveAs(String fileName) {
+		//파일로 출력
+		PrintWriter pw;
+		try {
+			pw = new PrintWriter(new FileWriter(fileName));
+			for(int i=0;i<n;i++)
+				System.out.println(words[i]+" "+count[i]);
+			pw.close();
+		} catch (IOException e) {
+			System.out.println("Save failed");
+			return;
+		}
 		
 	}
 
