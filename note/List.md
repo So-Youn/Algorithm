@@ -1,4 +1,4 @@
-# List
+# [List](https://programmers.co.kr/learn/courses/17)
 
 * 데이터 순서대로저장
 
@@ -54,6 +54,21 @@ private int size = 0;
 //Object를 담는 배열 elementData
 private Object[] elementData = new Object[100];
 ```
+
+```java
+//원소 갯수 무한정
+public void resize(){
+    if(elementData.length == size){
+        Object[] newArray = new Object[size+100];
+        for(int i=0;i<size-1;i++){
+            newArray[i] = elementData[i];
+        }
+        elementData = newArray; //배열의 크기 정보 연동
+    }
+}
+```
+
+
 
 ## 언어별 비교
 
