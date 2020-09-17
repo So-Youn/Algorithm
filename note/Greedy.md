@@ -95,7 +95,52 @@ public class Greedy {
 }
 ```
 
-# 2
 
-* 부분 배낭 문제
 
+## 2 
+
+* [잃어버린 괄호](https://www.acmicpc.net/problem/1541)
+
+![image-20200917150246535](images/image-20200917150246535.png)
+
+* 결괏값 가장 작게 만들기 위해서는 `-` 를 기준으로 괄호 만들기
+
+* `-` 만나기 전까지 모든 숫자를 더하고(+ + ++..) , 그 값을 빼는 구조
+
+  * 단, 첫 번째 문자는 `+`  값 이어야 한다.
+
+  
+
+  ```java
+  public static void main(String[] args) {
+  		Scanner sc = new Scanner(System.in);
+  		String str = sc.next();
+  		String[] num = str.split("\\-");
+  		int min =0;
+  		for(int i=0;i<num.length;i++) {
+  			int calcNum = calc(num[i]);
+  			
+  			if(i==0) calcNum*=-1; //첫번째 값은 양수
+  			min -= calcNum;
+  		}
+  		System.out.println(min);
+  		
+  		sc.close();
+  	}
+  ```
+
+  ```java
+  //더하기
+  private static int calc(String str) {
+  		String[] Nums = str.split("\\+");
+  		int result = 0;
+  		for (String number : Nums) {
+  			result += Integer.parseInt(number);
+  		}
+  		return result;
+  	}
+  ```
+
+  
+
+  
