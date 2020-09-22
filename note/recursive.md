@@ -69,3 +69,7 @@ public class factorial {
   ```
 
   
+
+* 별 찍기
+
+![image-20200922014605335](images/image-20200922014605335.png)

@@ -62,3 +62,29 @@ int idx = Arrays.binarySearch(arr,2); //idx =2
 
 * `static void sort(Object[] a)` : 객체 배열에 저장된 객체가 구현한 Comparable에 의한 정렬
 * `static void sort(Object[] a, Comparator c)` : 지정한 Comparator에 의한 정렬
+
+
+
+## ex
+
+![image-20200922162437038](images/image-20200922162437038.png)
+
+```java
+class Solution {
+    public String[] solution(String[] strings, int n) {
+        String[] answer = {};
+		ArrayList<String> arr = new ArrayList<String>();
+		for (int i = 0; i < strings.length; i++) {
+			arr.add(strings[i].charAt(n) + strings[i]);
+		}
+		Collections.sort(arr);
+		answer = new String[arr.size()];
+		for (int i = 0; i < arr.size(); i++) {
+			answer[i] = arr.get(i).substring(1, arr.get(i).length());
+		}
+    return answer;
+    }
+}
+```
+
+* n번째 character를 문자 맨 앞에 붙여서, 정렬 -> 다시 문자 떼서 출력

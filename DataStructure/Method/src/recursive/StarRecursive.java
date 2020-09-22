@@ -8,8 +8,19 @@ public class StarRecursive {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int N = sc.nextInt();
+		sc.close();
 		arr = new char[N][N];
+		
 		star(0, 0, N, false);
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0 ; i < N ; i++) {
+			for(int j = 0 ; j < N ; j++) {
+				sb.append( arr[i][j] );
+			}
+			sb.append('\n');
+		}
+		System.out.println(sb);
+		
 	}
 
 	private static void star(int x, int y, int N, boolean blank) {
@@ -20,6 +31,7 @@ public class StarRecursive {
 		 *  인덱스는 0부터이므로 N=3일 때의 공백은 arr[1][1]
 		 *  (0, 0), (0, 1), (0, 2), (1, 0) 까지는 별을 출력하고 
 		 *  별 출력이 4 번 이루어지면 그다음 블럭은 반드시 공백
+		 *  N = 9일때 , N=3일 때의 모양이 한 블럭이 되어 똑같이 되풀이
 		 */
 		if (blank) {
 			for (int i = x; i < x + N; i++) {
