@@ -1,8 +1,10 @@
 package backTracking;
 
 import java.util.Scanner;
-
-public class BackTracking {
+/*
+ * N°úM (https://www.acmicpc.net/problem/15649)
+ */
+public class BackTracking01 {
 	public static int[] arr;
 	public static boolean[] visit;
 	public static StringBuilder sb = new StringBuilder();

@@ -35,7 +35,7 @@
 * Collection `values()` : 저장된 모든 value객체를 반환한다.
   * Value는 중복을 허용하기 때문에 Collection타입
 
-:bulb: Map인터페이스를 구현하는 클래스에서는 `Map.Entry `인터페이스도 구현해야 한다. 
+:bulb: Map인터페이스를 구현하는 class에서는 `Map.Entry `인터페이스도 구현해야 한다. 
 
 ```java
 public interface Map{
