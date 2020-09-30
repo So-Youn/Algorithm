@@ -1,4 +1,4 @@
-package KaKao;
+package codingTest;
 
 import java.util.Scanner;
 
