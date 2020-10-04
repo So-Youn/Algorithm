@@ -7,21 +7,25 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-import BFS.Bfs01.Dot;
-
 /*
- * 미로 탐색(https://www.acmicpc.net/problem/2178)
- * Bfs 적용 
- * 1. 최소 비용 문제 (인접한 칸으로 이동)
- * 2. 간선 가중치가 1인 경우
- * 3. 정점과 간선의 개수가 적다.
+ * 미로 찾기
  */
-public class Bfs02 {
-	static int N, M; // 가로세로 칸 수
+public class Book02 {
+	static int N, M;
+	static int[][] arr;
+	static int[][] visited;
 	static int[] dx = { -1, 0, 1, 0 };
 	static int[] dy = { 0, -1, 0, 1 };
-	static int[][] arr;
-	static int[][] checked;
+
+	static class Point {
+		int x;
+		int y;
+
+		public Point(int x, int y) {
+			this.x = x;
+			this.y = y;
+		}
+	}
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -29,7 +33,7 @@ public class Bfs02 {
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
 		arr = new int[N + 1][M + 1];
-		checked = new int[N][M];
+		visited = new int[N + 1][M + 1];
 		for (int i = 1; i <= N; i++) {
 			String str = br.readLine();
 			for (int j = 1; j <= M; j++) {
@@ -40,35 +44,31 @@ public class Bfs02 {
 	}
 
 	public static void bfs() {
-		Queue<Dot> que = new LinkedList<Dot>();
-		// 시작점 추가
-		que.add(new Dot(1, 1));
-
-		checked[1][1] = 1;
+		Queue<Point> que = new LinkedList<Point>();
+		que.add(new Point(1, 1)); // 동빈 시작 위치
+		visited[1][1] = 1;
 
 		while (!que.isEmpty()) {
-			Dot d = que.poll();
+			Point p = que.poll();
 			for (int i = 0; i < 4; i++) {
-				int nx = d.x + dx[i];
-				int ny = d.y + dy[i];
-				if (checkLocation(nx, ny)) {
-					// 인접 노드 추가
-					que.add(new Dot(nx, ny));
-					// 추가한 노드까지의 거리 = 현재 노드까지의 거리 + 1
-					checked[nx][ny] = checked[d.x][d.y] + 1;
+				int nx = p.x + dx[i];
+				int ny = p.y + dy[i];
+				if (check(nx, ny)) {
+					que.add(new Point(nx, ny));
+					visited[nx][ny] = visited[p.x][p.y] + 1;
 				}
 			}
+
 		}
-		System.out.println(checked[N][M]);
+		System.out.println(visited[N][M]);
 	}
 
-	private static boolean checkLocation(int x, int y) {
-		if (arr[x][y] == 0 && checked[x][y] != 0)
+	public static boolean check(int x, int y) {
+		if (x < 1 | x > N | y < 1 | y > M) 
 			return false;
-		if (x < 1 || x > N || y < 1 || y > M)
+		if (arr[x][y] == 0 || visited[x][y] != 0)
 			return false;
 		return true;
-
 	}
 
 }

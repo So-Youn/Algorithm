@@ -16,7 +16,7 @@ public class StrCompress_2 {
 
 	public static int solution(String s) {
 		int answer = s.length();
-		for (int i = 1; i <= s.length() / 2+1; i++) {
+		for (int i = 1; i <= s.length() /2+1; i++) {
 			int result = check(s, i);
 			if (result < answer)
 				answer = result;
