@@ -30,7 +30,9 @@
   PrintWriter pw = new PrintWriter(new FileWriter(fileName));
   ```
 
-  
+* **String.valueOf()** : 파라미터가 NULL 이면 문자열 `NULL` 만들어서 반환
+
+* **toString()** : 대상 값이 NULL 이면 NPE 발생, Object에 담긴 값이 Stirng이 아니어도 출력한다.
 
 # 클래스
 
