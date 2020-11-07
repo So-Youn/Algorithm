@@ -50,7 +50,7 @@ int idx = Arrays.binarySearch(arr,2); //idx =2
     List list = new ArrayList(Arrays.asList(1,2,3,4,5));
     ```
 
-    
+* 내림차순 : Arrays.sort(array, Collections.reverseOrder());
 
 # Comparator와 Comparable
 
@@ -88,3 +88,24 @@ class Solution {
 ```
 
 * n번째 character를 문자 맨 앞에 붙여서, 정렬 -> 다시 문자 떼서 출력
+
+
+
+# Arrays.sort와 Collections.sort의 차이
+
+> `Arrays.sort`는 배열 정렬
+>
+> `Collections.sort`는 클래스의 객체 정렬
+
+```java
+List<String> list = new ArrayList<String>();
+list.add("a");list.add("c");
+list.add("가");list.add("A");
+list.add("b");list.add("5");
+Collections.sort(list);
+for(int i=0;i<list.size();i++){
+    System.out.print(list.get(i)+" ");
+}
+Collections.reverse(list);
+```
+

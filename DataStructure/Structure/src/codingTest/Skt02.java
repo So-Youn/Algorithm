@@ -1,8 +1,5 @@
 package codingTest;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 public class Skt02 {
 	public static void main(String[] args) {
 		//int N = 4, K = 10;
