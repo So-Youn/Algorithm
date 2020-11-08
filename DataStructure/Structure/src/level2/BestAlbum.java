@@ -36,7 +36,7 @@ public class BestAlbum {
 		Collections.sort(songList, new Comparator<Song>() {
 
 			@Override
-			public int compare(Song o1, Song o2) {
+			public int compare(Song o1, Song o2) {              
 				if (o1.genre.equals(o2.genre)) {
 					return o1.compareTo(o2);
 				} else {
